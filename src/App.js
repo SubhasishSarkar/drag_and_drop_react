@@ -5,19 +5,13 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 export default function App() {
 
   const defaultList = ["A", "B", "C", "D", "E"];
-  // React state to track order of items
   const [itemList, setItemList] = useState(defaultList);
 
-  // Function to update list on drop
   const handleDrop = (droppedItem) => {
-    // Ignore drop outside droppable container
     if (!droppedItem.destination) return;
     var updatedList = [...itemList];
-    // Remove dragged item
     const [reorderedItem] = updatedList.splice(droppedItem.source.index, 1);
-    // Add dropped item
     updatedList.splice(droppedItem.destination.index, 0, reorderedItem);
-    // Update State
     setItemList(updatedList);
   };
 
